@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>CV - Portfolio</title>
+	<title>Resume - Portfolio</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
@@ -30,7 +30,11 @@
 		html {
 		  scroll-behavior: smooth;
 		}
+		#emailLi {
+            cursor: pointer;
+        }
 		</style>
+		
 </head>
 
 <body>
@@ -80,7 +84,28 @@
 						<h4 class="font-yellow">I deeply love software development</h4>
 						<ul class="information margin-tb-30">
 <!-- 							<li><b class="font-yellow">BORN</b> : April 12, 1995</li> -->
-							<li><b class="font-yellow">EMAIL</b> : pubudupraneeth@gmail.com</li>
+<li id="emailLi"><b class="font-yellow">EMAIL</b> : <span id="email">pubudupraneeth@gmail.com</span></li>
+
+<script>
+	// Get references to the li and email elements
+	const emailLi = document.getElementById("emailLi");
+	const emailElement = document.getElementById("email");
+	
+	// Add a click event listener to the li element
+	emailLi.addEventListener("click", function() {
+		copyEmail(emailElement.innerText);
+	});
+
+	function copyEmail(emailText) {
+		const tempInput = document.createElement("input");
+		document.body.appendChild(tempInput);
+		tempInput.value = emailText;
+		tempInput.select();
+		document.execCommand("copy");
+		document.body.removeChild(tempInput);
+		alert("Email address copied to clipboard: " + emailText);
+	}
+</script>
 
 						</ul>
 						<ul class="social-icons">
@@ -98,7 +123,7 @@
 					</div><!-- col-sm-8 -->
 
 					<div class="col-sm-10 col-md-3 col-lg-3">
-						<a class="downlad-btn" href="/BuddhikaPDeSilva.pdf">Download CV</a>
+						<a class="downlad-btn" href="/H.M.P.Praneeth_J.pdf">Download Resume</a>
 					</div><!-- col-lg-2 -->
 
 				</div><!-- row -->
