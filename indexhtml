@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+ 
+		<meta http-equiv='refresh' content='0; URL=https://praneethpj-vs-portfolio.vercel.app/'>
+	 
+	<!-- <title>Resume - Portfolio</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+ 
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+ 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="common-css/bootstrap.css" rel="stylesheet">
+
+	<link href="common-css/ionicons.css" rel="stylesheet">
+
+	<link href="common-css/fluidbox.min.css" rel="stylesheet">
+
+	<link href="02-cv-boxed/css/styles.css" rel="stylesheet">
+
+	<link href="02-cv-boxed/css/responsive.css" rel="stylesheet">
+
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<style>
+		html {
+		  scroll-behavior: smooth;
+		}
+		#emailLi {
+            cursor: pointer;
+        }
+		</style> -->
+		
+</head>
+
+<body>
+
+	<section class="intro-section">
+		<div class="container">
+
+			<div class="heading-wrapper">
+				<div class="row">
+				
+
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<div class="info">
+							<i class="icon ion-ios-telephone-outline"></i>
+							<div class="right-area">
+								<h5>+1 672 866 8978</h5>
+								<h6>MON - SUN,8AM - 7PM</h6>
+							</div><!-- right-area -->
+						</div><!-- info -->
+					</div><!-- col-sm-4 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<div class="info">
+							<i class="icon ion-ios-chatboxes-outline"></i>
+							<div class="right-area">
+								<h5>pubudupraneeth@gmail.com</h5>
+								<h6>REPLY IN 24 HOURS</h6>
+							</div><!-- right-area -->
+						</div><!-- info -->
+					</div><!-- col-sm-4 -->
+				</div><!-- row -->
+			</div><!-- heading-wrapper -->
+
+
+
+			<div class="intro">
+				<div class="row">
+
+					<div class="col-sm-8 col-md-4 col-lg-3">
+						<div class="profile-img margin-b-30">
+							<img src="images/profile-1-250x250.jpg" alt="" style="border-radius: 50%; width: 250px; height: 250px;">
+						  </div>
+					</div><!-- col-sm-8 -->
+
+					<div class="col-sm-10 col-md-5 col-lg-6">
+						<h2><b>H.M.P.Praneeth.J</b></h2>
+						<h4 class="font-yellow">I deeply love software development</h4>
+						<ul class="information margin-tb-30">
+<!-- 							<li><b class="font-yellow">BORN</b> : April 12, 1995</li> -->
+<li id="emailLi"><b class="font-yellow">EMAIL</b> : <span id="email">pubudupraneeth@gmail.com</span></li>
+
+<script>
+	// Get references to the li and email elements
+	const emailLi = document.getElementById("emailLi");
+	const emailElement = document.getElementById("email");
+	
+	// Add a click event listener to the li element
+	emailLi.addEventListener("click", function() {
+		copyEmail(emailElement.innerText);
+	});
+
+	function copyEmail(emailText) {
+		const tempInput = document.createElement("input");
+		document.body.appendChild(tempInput);
+		tempInput.value = emailText;
+		tempInput.select();
+		document.execCommand("copy");
+		document.body.removeChild(tempInput);
+		alert("Email address copied to clipboard: " + emailText);
+	}
+</script>
+
+						</ul>
+						<ul class="social-icons">
+
+							<li><a href="https://www.linkedin.com/in/praneethpj/"><i
+										class="ion-social-linkedin"></i></a></li>
+							<li><a href="https://github.com/praneethpj/"><i class="fa fa-github"></i></a></li>
+							<li><a href="https://stackoverflow.com/users/1536682/praneeth-pj"><i class="fa fa-stack-overflow"></i></a></li>
+							<li><a href="https://medium.com/@pubudupraneeth"><i class="fa fa-medium"></i></a></li>
+							<li><a href="https://www.facebook.com/praneethpj"><i class="ion-social-facebook"></i></a>
+							</li>
+
+
+						</ul>
+					</div><!-- col-sm-8 -->
+
+					<div class="col-sm-10 col-md-3 col-lg-3">
+						<a class="downlad-btn" href="/H.M.P.Praneeth_J.pdf">Download Resume</a>
+					</div><!-- col-lg-2 -->
+
+				</div><!-- row -->
+
+			</div><!-- intro -->
+		</div><!-- container -->
+	</section><!-- intro-section -->
+
+	<!-- <section>
+		
+
+		<nav class="navbar navbar-expand-sm bg-primary justify-content-center fixed-bottom navbar-dark">
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="#about">About Me</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#experience">Work Experience</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#portfolio">Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#education">Education</a>
+					</li>
+				</ul>
+			</div>
+		  </nav>
+	</section> -->
+
+
+
+
+	<section class="about-section section" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-3">
+					<div class="heading">
+						<h3><b>About me</b></h3>
+						<h6 class="font-lite-black"><b>PROFESSIONAL PATH</b></h6>
+					</div>
+				</div><!-- col-sm-3 -->
+				<div class="col-sm-12 col-md-9">
+					<p class="margin-b-50">Praneeth Jayarathna is from Prince George, Canada (open work permit), and he graduated with a BSc. in Industrial Information Technology (Special) from Uva Wellassa University in Sri Lanka. Praneeth's favorite subjects include Mobile Application Development, E-Commerce, Artificial Intelligence, and Robotics. He also enjoys listening to music, cycling, and conducting experiments. He has a wealth of experience in hackathons, robotics competitions, and organizing technological workshops. Additionally, he possesses competitive skills such as problem-solving, creative thinking, and an artistic mind.</p>
+
+				</div><!-- col-sm-9 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</section><!-- about-section -->
+
+	<iframe src="https://docs.google.com/presentation/d/1P_cZXEMRoOv25hCjp76DHrhpSZpxtafRzlkUuxfWsIA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="1069" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+	<footer>
+		<p class="copyright">
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			Copyright &copy;
+			<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+			<i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+		</p>
+	</footer>
+
+
+	<!-- SCIPTS -->
+
+	<script src="common-js/jquery-3.2.1.min.js"></script>
+
+	<script src="common-js/tether.min.js"></script>
+
+	<script src="common-js/bootstrap.js"></script>
+
+	<script src="common-js/isotope.pkgd.min.js"></script>
+
+	<script src="common-js/jquery.waypoints.min.js"></script>
+
+	<script src="common-js/progressbar.min.js"></script>
+
+	<script src="common-js/jquery.fluidbox.min.js"></script>
+
+	<script src="common-js/scripts.js"></script>
+
+</body>
+
+</html>
