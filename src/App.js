@@ -188,7 +188,7 @@ function App() {
     >
       {isLoading && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl">
-        Loading...
+        ...
       </div>
       )}
       {error && (
@@ -202,19 +202,27 @@ function App() {
         </div>
       )}
 
-      {fileSystem.map((item) => (
-        <Draggable key={item.id}>
-          <div
-            id={`item-${item.id}`}
-            className="absolute flex flex-col items-center cursor-pointer"
-            style={{ top: item.position.top, left: item.position.left * 10 }}
-            onDoubleClick={() => openWindow(item)}
-          >
-            {getIcon(item.iconType)}
-            <span className="text-white text-xs">{item.label}</span>
-          </div>
-        </Draggable>
-      ))}
+<div className="relative">
+  {fileSystem.map((item, index) => (
+    <Draggable key={item.id}>
+      <div
+        id={`item-${item.id}`}
+        className="absolute flex flex-col items-center cursor-pointer"
+        style={{
+          top: index * 100,  
+          left: index < 2 ? index * 80 : 200,  
+        }}
+        onDoubleClick={() => openWindow(item)}
+      >
+        {getIcon(item.iconType)}
+        <span className="text-white text-xs">{item.label}</span>
+      </div>
+    </Draggable>
+  ))}
+</div>
+
+
+
 
       <ContextMenu
         x={contextMenu.x}
