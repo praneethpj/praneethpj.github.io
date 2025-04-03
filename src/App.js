@@ -185,6 +185,17 @@ function App() {
     setSelectedItem(item.id); // Highlight clicked item
     
   };
+  const handleTouch = (() => {
+    let lastTap = 0;
+    return (e, item) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      if (tapLength < 300 && tapLength > 0) {
+        openWindow(item); // Double-tap detected
+      }
+      lastTap = currentTime;
+    };
+  })();
   return (
     <div
       className="w-screen h-screen bg-cover bg-center relative"
@@ -225,9 +236,7 @@ function App() {
       }}
       onDoubleClick={() => openWindow(item)}
       onClick={() => handleItemClick(item)}
-      onTouchEnd={(e) => {
-        if (e.detail === 2) openWindow(item);
-      }}
+      onTouchEnd={(e) => handleTouch(e, item)} // Fix double-tap issue
     >
       {getIcon(item.iconType)}
       <span className="text-white text-xs">{item.label}</span>
