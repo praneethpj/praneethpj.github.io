@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import Draggable from "react-draggable";
 import FolderWindow from "./components/FolderWindow";
 import PdfViewer from "./components/PdfViewer";
@@ -10,6 +10,7 @@ import getIcon from "./utils/getIcon";
 import background from "./assets/wallpaper.jpg";
 import { createPortal } from "react-dom";
 import Toolbar from "./components/Toolbar";
+ 
 
 function App() {
   const [fileSystem, setFileSystem] = useState([]);
@@ -185,17 +186,18 @@ function App() {
     setSelectedItem(item.id); // Highlight clicked item
     
   };
-  const handleTouch = (() => {
-    let lastTap = 0;
-    return (e, item) => {
-      const currentTime = new Date().getTime();
-      const tapLength = currentTime - lastTap;
-      if (tapLength < 300 && tapLength > 0) {
-        openWindow(item); // Double-tap detected
-      }
-      lastTap = currentTime;
-    };
-  })();
+
+
+  const lastTapRef = useRef(0);
+
+const handleTouch = (e, item) => {
+  const now = Date.now();
+  if (now - lastTapRef.current < 300) {
+    openWindow(item); // Double-tap detected
+  }
+  lastTapRef.current = now;
+}; 
+
   return (
     <div
       className="w-screen h-screen bg-cover bg-center relative"
@@ -219,24 +221,24 @@ function App() {
       )}
 
 {fileSystem.map((item, index) => (
-  <Draggable key={item.id}>
+  <Draggable key={item.id} touchAction="none" enableUserSelectHack={false}>
     <div
       id={`item-${item.id}`}
       className={`absolute flex flex-col items-center cursor-pointer ${
         selectedItem === item.id ? "bg-blue-500 bg-opacity-50" : ""
       }`}
       style={{
-        top: item.position.top + index * 60 + 50, // Adds space between icons
+        top: item.position.top + index * 60 + 50,
         left:
           index === 0 || index === 1
-            ? 20  * 1 // First two icons closer to the left
+            ? 20 // First two icons closer to the left
             : index === fileSystem.length - 1
-            ? 30  * 5 // Last icon slightly left
-            : 40 * 3, // Others scattered slightly
+            ? 30 * 5 // Last icon slightly left
+            : 40 * 3, // Others scattered
       }}
       onDoubleClick={() => openWindow(item)}
       onClick={() => handleItemClick(item)}
-      onTouchEnd={(e) => handleTouch(e, item)} // Fix double-tap issue
+      onTouchStart={(e) => handleTouch(e, item)} // ✅ Fix touch not working
     >
       {getIcon(item.iconType)}
       <span className="text-white text-xs">{item.label}</span>
