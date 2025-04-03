@@ -17,6 +17,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [contextMenu, setContextMenu] = useState({ show: false, x: 0, y: 0, target: null });
+  const [selectedItem, setSelectedItem] = useState(null);
+
 
   const GITHUB_REPO_URL = "https://raw.githubusercontent.com/praneethpj/portfolio-storage/master";
   const GITHUB_API_URL = "https://api.github.com/repos/praneethpj/portfolio-storage/contents";
@@ -179,7 +181,10 @@ function App() {
       { label: "Refresh", action: "refresh" },
     ];
   };
-
+  const handleItemClick = (item) => {
+    setSelectedItem(item.id); // Highlight clicked item
+    
+  };
   return (
     <div
       className="w-screen h-screen bg-cover bg-center relative"
@@ -188,7 +193,7 @@ function App() {
     >
       {isLoading && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl">
-        ...
+        Loading...
       </div>
       )}
       {error && (
@@ -202,26 +207,33 @@ function App() {
         </div>
       )}
 
-<div className="relative">
-  {fileSystem.map((item, index) => (
-    <Draggable key={item.id}>
-      <div
-        id={`item-${item.id}`}
-        className="absolute flex flex-col items-center cursor-pointer"
-        style={{
-          top: index * 100,  
-          left: index < 2 ? index * 80 : 200,  
-        }}
-        onDoubleClick={() => openWindow(item)}
-      >
-        {getIcon(item.iconType)}
-        <span className="text-white text-xs">{item.label}</span>
-      </div>
-    </Draggable>
-  ))}
-</div>
-
-
+{fileSystem.map((item, index) => (
+  <Draggable key={item.id}>
+    <div
+      id={`item-${item.id}`}
+      className={`absolute flex flex-col items-center cursor-pointer ${
+        selectedItem === item.id ? "bg-blue-500 bg-opacity-50" : ""
+      }`}
+      style={{
+        top: item.position.top + index * 60 + 50, // Adds space between icons
+        left:
+          index === 0 || index === 1
+            ? 20  * 1 // First two icons closer to the left
+            : index === fileSystem.length - 1
+            ? 30  * 5 // Last icon slightly left
+            : 40 * 3, // Others scattered slightly
+      }}
+      onDoubleClick={() => openWindow(item)}
+      onClick={() => handleItemClick(item)}
+      onTouchEnd={(e) => {
+        if (e.detail === 2) openWindow(item);
+      }}
+    >
+      {getIcon(item.iconType)}
+      <span className="text-white text-xs">{item.label}</span>
+    </div>
+  </Draggable>
+))}
 
 
       <ContextMenu
